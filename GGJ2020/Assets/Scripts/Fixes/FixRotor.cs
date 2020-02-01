@@ -7,7 +7,6 @@ public class FixRotor : MonoBehaviour
     public bool isBroken { get; set; }
 
     private GameObject rotorPart = null;
-    private bool isFixing;
 
     private readonly float repairDuration = 5f;
 
@@ -26,7 +25,7 @@ public class FixRotor : MonoBehaviour
 
     public void Fix()
     {
-        if(!isFixing && isBroken)
+        if(!Main.Instance.isRepOrUp && isBroken)
         {
             StartCoroutine(Fixing());
         }
@@ -34,7 +33,7 @@ public class FixRotor : MonoBehaviour
 
     private IEnumerator Fixing()
     {
-        isFixing = true;
+        Main.Instance.isRepOrUp = true;
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(true);
 
         float counter = 0f;
@@ -48,6 +47,6 @@ public class FixRotor : MonoBehaviour
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(false);
         rotorPart.SetActive(true);
         isBroken = false;
-        isFixing = false;
+        Main.Instance.isRepOrUp = false;
     }
 }

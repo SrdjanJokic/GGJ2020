@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FixCannon : MonoBehaviour
@@ -8,7 +7,6 @@ public class FixCannon : MonoBehaviour
 
     private GameObject cannonPart = null;
     private GameObject cannonBrokenPart = null;
-    private bool isFixing;
 
     private readonly float repairDuration = 5f;
 
@@ -30,7 +28,7 @@ public class FixCannon : MonoBehaviour
 
     public void Fix()
     {
-        if (!isFixing && isBroken)
+        if (!Main.Instance.isRepOrUp && isBroken)
         {
             StartCoroutine(Fixing());
         }
@@ -38,7 +36,7 @@ public class FixCannon : MonoBehaviour
 
     private IEnumerator Fixing()
     {
-        isFixing = true;
+        Main.Instance.isRepOrUp = true;
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(true);
 
         float counter = 0f;
@@ -53,6 +51,6 @@ public class FixCannon : MonoBehaviour
         cannonBrokenPart.SetActive(false);
         cannonPart.SetActive(true);
         isBroken = false;
-        isFixing = false;
+        Main.Instance.isRepOrUp = false;
     }
 }

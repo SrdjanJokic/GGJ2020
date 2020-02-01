@@ -7,7 +7,6 @@ public class UpArmor : MonoBehaviour
     public bool notUpgraded { get; set; }
 
     private GameObject armorPart = null;
-    private bool isUpgrading;
 
     private readonly float repairDuration = 5f;
 
@@ -26,7 +25,7 @@ public class UpArmor : MonoBehaviour
 
     public void Upgrade()
     {
-        if (!isUpgrading && notUpgraded)
+        if (!Main.Instance.isRepOrUp && notUpgraded)
         {
             StartCoroutine(Upgrading());
         }
@@ -34,7 +33,7 @@ public class UpArmor : MonoBehaviour
 
     private IEnumerator Upgrading()
     {
-        isUpgrading = true;
+        Main.Instance.isRepOrUp = true;
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(true);
 
         float counter = 0f;
@@ -48,6 +47,6 @@ public class UpArmor : MonoBehaviour
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(false);
         armorPart.SetActive(true);
         notUpgraded = false;
-        isUpgrading = false;
+        Main.Instance.isRepOrUp = false;
     }
 }

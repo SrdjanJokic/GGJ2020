@@ -8,7 +8,6 @@ public class FixSight : MonoBehaviour
 
     private GameObject sightPart = null;
     private GameObject sightBrokenPart = null;
-    private bool isFixing;
 
     private readonly float repairDuration = 5f;
 
@@ -30,7 +29,7 @@ public class FixSight : MonoBehaviour
 
     public void Fix()
     {
-        if (!isFixing && isBroken)
+        if (!Main.Instance.isRepOrUp && isBroken)
         {
             StartCoroutine(Fixing());
         }
@@ -38,7 +37,7 @@ public class FixSight : MonoBehaviour
 
     private IEnumerator Fixing()
     {
-        isFixing = true;
+        Main.Instance.isRepOrUp = true;
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(true);
 
         float counter = 0f;
@@ -53,6 +52,6 @@ public class FixSight : MonoBehaviour
         sightBrokenPart.SetActive(false);
         sightPart.SetActive(true);
         isBroken = false;
-        isFixing = false;
+        Main.Instance.isRepOrUp = false;
     }
 }

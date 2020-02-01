@@ -7,6 +7,7 @@ public class Main : MonoBehaviour
 
     // UI
     public Image repairProgress;
+    public bool isRepOrUp;
 
     private void Awake()
     {

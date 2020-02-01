@@ -6,14 +6,13 @@ public class UpPower : MonoBehaviour
 {
     public bool notUpgraded { get; set; }
 
-    private GameObject armorPart = null;
-    private bool isUpgrading;
+    private GameObject cannonPart = null;
 
     private readonly float repairDuration = 5f;
 
     private void Awake()
     {
-        //powerPart = transform.Find("Armor").gameObject;
+        cannonPart = transform.Find("UpperBody").Find("Cannon.002").gameObject;
 
         RemoveUpgrade();
     }
@@ -21,13 +20,12 @@ public class UpPower : MonoBehaviour
     public void RemoveUpgrade()
     {
         notUpgraded = true;
-        Debug.Log("Upgrade Removed");
-        //powerPart.SetActive(false);
+        cannonPart.SetActive(false);
     }
 
     public void Upgrade()
     {
-        if (!isUpgrading && notUpgraded)
+        if (!Main.Instance.isRepOrUp && notUpgraded)
         {
             StartCoroutine(Upgrading());
         }
@@ -35,7 +33,7 @@ public class UpPower : MonoBehaviour
 
     private IEnumerator Upgrading()
     {
-        isUpgrading = true;
+        Main.Instance.isRepOrUp = true;
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(true);
 
         float counter = 0f;
@@ -47,9 +45,8 @@ public class UpPower : MonoBehaviour
         }
 
         Main.Instance.repairProgress.transform.parent.gameObject.SetActive(false);
-        //powerPart.SetActive(true);
-        Debug.Log("Upgrade Placed");
+        cannonPart.SetActive(true);
         notUpgraded = false;
-        isUpgrading = false;
+        Main.Instance.isRepOrUp = false;
     }
 }
