@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/NemanjaScene2.unity
+    guid: 1a72c1f832c506345ae7e930d77b9251
+  - enabled: 1
+    path: Assets/Scenes/NemanjaScene.unity
+    guid: 180941df2618e56409fa83cd851bfad7
   m_configObjects: {}
