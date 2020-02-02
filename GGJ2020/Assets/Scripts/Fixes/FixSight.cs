@@ -9,14 +9,12 @@ public class FixSight : MonoBehaviour
     private GameObject sightPart = null;
     private GameObject sightBrokenPart = null;
 
-    private readonly float repairDuration = 5f;
+    private readonly float repairDuration = 2f;
 
     private void Awake()
     {
         sightPart = transform.Find("UpperBody").Find("LookingGlass").gameObject;
         sightBrokenPart = transform.Find("UpperBody").Find("LookingGlassBroken").gameObject;
-
-        Break();
     }
 
     public void Break()
@@ -29,7 +27,8 @@ public class FixSight : MonoBehaviour
 
     public void Fix()
     {
-        if (!Main.Instance.isRepOrUp && isBroken)
+        if (((!Main.Instance.blueIsRepOrUp && transform.CompareTag("Blue")) ||
+            (!Main.Instance.redIsRepOrUp && transform.CompareTag("Red"))) && isBroken)
         {
             StartCoroutine(Fixing());
         }
@@ -37,21 +36,34 @@ public class FixSight : MonoBehaviour
 
     private IEnumerator Fixing()
     {
-        Main.Instance.isRepOrUp = true;
-        Main.Instance.repairProgress.transform.parent.gameObject.SetActive(true);
+        SetRepTag(true);
+        UnityEngine.UI.Image progress = transform.CompareTag("Blue") ? Main.Instance.blueRepairProgress : Main.Instance.redRepairProgress;
+        progress.transform.parent.gameObject.SetActive(true);
 
         float counter = 0f;
         while (counter < repairDuration)
         {
-            Main.Instance.repairProgress.fillAmount = counter / repairDuration;
+            progress.fillAmount = counter / repairDuration;
             counter += Time.deltaTime;
             yield return null;
         }
 
-        Main.Instance.repairProgress.transform.parent.gameObject.SetActive(false);
+        progress.transform.parent.gameObject.SetActive(false);
         sightBrokenPart.SetActive(false);
         sightPart.SetActive(true);
         isBroken = false;
-        Main.Instance.isRepOrUp = false;
+        SetRepTag(false);
+    }
+
+    private void SetRepTag(bool val)
+    {
+        if (transform.CompareTag("Blue"))
+        {
+            Main.Instance.blueIsRepOrUp = val;
+        }
+        else
+        {
+            Main.Instance.redIsRepOrUp = val;
+        }
     }
 }

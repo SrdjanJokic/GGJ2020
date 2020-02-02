@@ -8,13 +8,11 @@ public class UpPower : MonoBehaviour
 
     private GameObject cannonPart = null;
 
-    private readonly float repairDuration = 5f;
+    private readonly float repairDuration = 2f;
 
     private void Awake()
     {
         cannonPart = transform.Find("UpperBody").Find("Cannon.002").gameObject;
-
-        RemoveUpgrade();
     }
 
     public void RemoveUpgrade()
@@ -25,7 +23,8 @@ public class UpPower : MonoBehaviour
 
     public void Upgrade()
     {
-        if (!Main.Instance.isRepOrUp && notUpgraded)
+        if (((!Main.Instance.blueIsRepOrUp && transform.CompareTag("Blue")) ||
+            (!Main.Instance.redIsRepOrUp && transform.CompareTag("Red"))) && notUpgraded)
         {
             StartCoroutine(Upgrading());
         }
@@ -33,20 +32,33 @@ public class UpPower : MonoBehaviour
 
     private IEnumerator Upgrading()
     {
-        Main.Instance.isRepOrUp = true;
-        Main.Instance.repairProgress.transform.parent.gameObject.SetActive(true);
+        SetRepTag(true);
+        UnityEngine.UI.Image progress = transform.CompareTag("Blue") ? Main.Instance.blueRepairProgress : Main.Instance.redRepairProgress;
+        progress.transform.parent.gameObject.SetActive(true);
 
         float counter = 0f;
         while (counter < repairDuration)
         {
-            Main.Instance.repairProgress.fillAmount = counter / repairDuration;
+            progress.fillAmount = counter / repairDuration;
             counter += Time.deltaTime;
             yield return null;
         }
 
-        Main.Instance.repairProgress.transform.parent.gameObject.SetActive(false);
+        progress.transform.parent.gameObject.SetActive(false);
         cannonPart.SetActive(true);
         notUpgraded = false;
-        Main.Instance.isRepOrUp = false;
+        SetRepTag(false);
+    }
+
+    private void SetRepTag(bool val)
+    {
+        if (transform.CompareTag("Blue"))
+        {
+            Main.Instance.blueIsRepOrUp = val;
+        }
+        else
+        {
+            Main.Instance.redIsRepOrUp = val;
+        }
     }
 }

@@ -6,6 +6,7 @@ public class BlueUISelector : MonoBehaviour
 {
     [SerializeField] private GameObject[] topButtons = null;
     [SerializeField] private GameObject[] botButtons = null;
+    [SerializeField] private EventSystem blueEventSystem = null;
 
     private GameObject currentlySelected;
     private bool isInTopRow = true;
@@ -14,7 +15,7 @@ public class BlueUISelector : MonoBehaviour
     private void Start()
     {
         currentlySelected = topButtons[0];
-        EventSystem.current.SetSelectedGameObject(currentlySelected);
+        blueEventSystem.SetSelectedGameObject(currentlySelected);
     }
     
     private void Update()
@@ -33,7 +34,7 @@ public class BlueUISelector : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             currentlySelected = topButtons[0];
-            EventSystem.current.SetSelectedGameObject(currentlySelected);
+            blueEventSystem.SetSelectedGameObject(currentlySelected);
 
             selectedInRowCounter = 0;
             isInTopRow = true;
@@ -43,7 +44,7 @@ public class BlueUISelector : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             currentlySelected = botButtons[0];
-            EventSystem.current.SetSelectedGameObject(currentlySelected);
+            blueEventSystem.SetSelectedGameObject(currentlySelected);
 
             selectedInRowCounter = 0;
             isInTopRow = false;
@@ -56,7 +57,7 @@ public class BlueUISelector : MonoBehaviour
 
             selectedInRowCounter--;
             currentlySelected = isInTopRow ? topButtons[selectedInRowCounter] : botButtons[selectedInRowCounter];
-            EventSystem.current.SetSelectedGameObject(currentlySelected);
+            blueEventSystem.SetSelectedGameObject(currentlySelected);
         }
 
         // Go right in the row
@@ -67,8 +68,7 @@ public class BlueUISelector : MonoBehaviour
 
             selectedInRowCounter++;
             currentlySelected = isInTopRow ? topButtons[selectedInRowCounter] : botButtons[selectedInRowCounter];
-            EventSystem.current.SetSelectedGameObject(currentlySelected);
+            blueEventSystem.SetSelectedGameObject(currentlySelected);
         }
     }
-
 }
