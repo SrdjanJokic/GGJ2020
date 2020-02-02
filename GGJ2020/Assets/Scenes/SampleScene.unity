@@ -2756,7 +2756,8 @@ MonoBehaviour:
   redRepairProgress: {fileID: 501687425}
   activeBlueTank: {fileID: 0}
   activeRedTank: {fileID: 0}
-  isRepOrUp: 0
+  redIsRepOrUp: 0
+  blueIsRepOrUp: 0
 --- !u!4 &911478058
 Transform:
   m_ObjectHideFlags: 0
@@ -3252,7 +3253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8a75383357a1c4b9f0243a663347bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBlue: 1
+  isBlue: 0
   spawn: {fileID: 455422991}
   numberText: {fileID: 1979306984}
 --- !u!114 &1177256150
