@@ -19,14 +19,14 @@ public class SpawnTanks : MonoBehaviour
     private void SpawnFirstRound()
     {
         // Spawn blue
-        FirstRoundFirstTank(Instantiate(blueTank, blueSpawn));
-        FirstRoundSecondTank(Instantiate(blueTank, blueSpawn));
-        FirstRoundThirdTank(Instantiate(blueTank, blueSpawn));
+        FirstRoundFirstTank(Instantiate(blueTank, blueSpawn.position, Quaternion.Euler(0f, 90f, 0f), blueSpawn));
+        FirstRoundSecondTank(Instantiate(blueTank, blueSpawn.position, Quaternion.Euler(0f, 90f, 0f), blueSpawn));
+        FirstRoundThirdTank(Instantiate(blueTank, blueSpawn.position, Quaternion.Euler(0f, 90f, 0f), blueSpawn));
 
         // Spawn red
-        FirstRoundFirstTank(Instantiate(redTank, redSpawn));
-        FirstRoundSecondTank(Instantiate(redTank, redSpawn));
-        FirstRoundThirdTank(Instantiate(redTank, redSpawn));
+        FirstRoundFirstTank(Instantiate(redTank, redSpawn.position, Quaternion.Euler(0f, 90f, 0f), redSpawn));
+        FirstRoundSecondTank(Instantiate(redTank, redSpawn.position, Quaternion.Euler(0f, 90f, 0f), redSpawn));
+        FirstRoundThirdTank(Instantiate(redTank, redSpawn.position, Quaternion.Euler(0f, 90f, 0f), redSpawn));
 
         for (int i = 1; i < blueSpawn.childCount; i++)
         {

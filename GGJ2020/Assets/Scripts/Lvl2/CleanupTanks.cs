@@ -29,16 +29,18 @@ public class CleanupTanks : MonoBehaviour
             blueTanks[i] = blueHolder.transform.GetChild(i);
         }
 
-        blueHolder.transform.DetachChildren();
-
         // Set them on their spawns
         for (int i = 0; i < blueTanks.Length; i++)
         {
             blueTanks[i].gameObject.SetActive(true);
             blueTanks[i].position = blueSpawn1;
             blueSpawn1.x += 7f;
-            blueTanks[i].localRotation = Quaternion.Euler(0f, -90f, 0f);
+
+            blueTanks[i].localRotation = Quaternion.Euler(0f, 0f, 0f);
+            blueTanks[i].GetComponent<Rigidbody>().isKinematic = false;
         }
+
+        blueTanks[0].GetComponent<Movement>().isControlled = true;
     }
 
     private void SpawnReds()
@@ -52,16 +54,18 @@ public class CleanupTanks : MonoBehaviour
             redTanks[i] = redHolder.transform.GetChild(i);
         }
 
-        redHolder.transform.DetachChildren();
-
         // Set them on their spawns
         for (int i = 0; i < redTanks.Length; i++)
         {
             redTanks[i].gameObject.SetActive(true);
             redTanks[i].position = redSpawn1;
             redSpawn1.x += 7f;
-            redTanks[i].localRotation = Quaternion.Euler(0f, -90f, 0f);
+
+            redTanks[i].localRotation = Quaternion.Euler(0f, 0f, 0f);
+            redTanks[i].GetComponent<Rigidbody>().isKinematic = false;
         }
+
+        redTanks[0].GetComponent<Movement>().isControlled = true;
     }
 
 
