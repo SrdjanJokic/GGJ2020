@@ -3382,6 +3382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueRepairProgress: {fileID: 1063971389}
   redRepairProgress: {fileID: 501687425}
+  bullet: {fileID: 0}
   controllerOfEdits: {fileID: 1922358012}
   activeBlueTank: {fileID: 0}
   activeRedTank: {fileID: 0}

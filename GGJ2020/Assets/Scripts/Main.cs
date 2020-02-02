@@ -9,6 +9,7 @@ public class Main : MonoBehaviour
     public Image blueRepairProgress;
     public Image redRepairProgress;
 
+    public GameObject bullet;
     public EditingTankController controllerOfEdits;
 
     // Active tanks

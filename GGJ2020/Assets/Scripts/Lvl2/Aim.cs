@@ -10,10 +10,13 @@ public class Aim : MonoBehaviour
     private string layer;
     private Transform upperPart;
     private GameObject goToLookAt = null;
+    private Shoot shoot;
 
     private void Awake()
     {
+        shoot = GetComponent<Shoot>();
         upperPart = transform.Find("Aimer");
+        Debug.LogError(shoot);
     }
 
     private void Start()
@@ -34,7 +37,7 @@ public class Aim : MonoBehaviour
         while(true)
         {
             GetClosest();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
@@ -54,6 +57,7 @@ public class Aim : MonoBehaviour
                     // Shoot
                     upperPart.LookAt(hitInfo.transform);
                     goToLookAt = hitInfo.transform.gameObject;
+                    shoot.ShootFromCannon();
                     return;
                 }
                 else

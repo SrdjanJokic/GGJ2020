@@ -68,7 +68,7 @@ public class CleanupTanks : MonoBehaviour
             redTanks[i].gameObject.AddComponent<Aim>();
         }
 
-        redTanks[0].GetComponent<Movement>().isControlled = true;
+        redTanks[2].GetComponent<Movement>().isControlled = true;
     }
 
 

@@ -13,7 +13,7 @@ public class SwitchTankInCombat : MonoBehaviour
     private void Start()
     {
         GetTanks();
-        ToggleRing(redTanks[0], true);
+        ToggleRing(redTanks[2], true);
         ToggleRing(blueTanks[0], true);
     }
 
