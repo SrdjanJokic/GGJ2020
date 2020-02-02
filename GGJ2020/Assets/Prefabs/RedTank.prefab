@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: -6908448155508505197}
   - component: {fileID: 3588613694571225490}
   - component: {fileID: -326604153769557215}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RedTank
   m_TagString: Red
   m_Icon: {fileID: 0}

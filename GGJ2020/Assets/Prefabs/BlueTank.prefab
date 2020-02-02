@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 2027960360}
   - component: {fileID: 2027960353}
   - component: {fileID: 2069842406949887639}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueTank
   m_TagString: Blue
   m_Icon: {fileID: 0}

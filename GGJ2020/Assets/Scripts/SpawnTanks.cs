@@ -19,8 +19,8 @@ public class SpawnTanks : MonoBehaviour
     private void SpawnFirstRound()
     {
         // Spawn blue
-        FirstRoundFirstTank(Instantiate(blueTank, blueSpawn.position, Quaternion.Euler(0f, 90f, 0f), blueSpawn));
         FirstRoundSecondTank(Instantiate(blueTank, blueSpawn.position, Quaternion.Euler(0f, 90f, 0f), blueSpawn));
+        FirstRoundFirstTank(Instantiate(blueTank, blueSpawn.position, Quaternion.Euler(0f, 90f, 0f), blueSpawn));
         FirstRoundThirdTank(Instantiate(blueTank, blueSpawn.position, Quaternion.Euler(0f, 90f, 0f), blueSpawn));
 
         // Spawn red

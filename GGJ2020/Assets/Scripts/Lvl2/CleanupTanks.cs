@@ -38,6 +38,7 @@ public class CleanupTanks : MonoBehaviour
 
             blueTanks[i].localRotation = Quaternion.Euler(0f, 0f, 0f);
             blueTanks[i].GetComponent<Rigidbody>().isKinematic = false;
+            blueTanks[i].gameObject.AddComponent<Aim>();
         }
 
         blueTanks[0].GetComponent<Movement>().isControlled = true;
@@ -63,6 +64,7 @@ public class CleanupTanks : MonoBehaviour
 
             redTanks[i].localRotation = Quaternion.Euler(0f, 0f, 0f);
             redTanks[i].GetComponent<Rigidbody>().isKinematic = false;
+            redTanks[i].gameObject.AddComponent<Aim>();
         }
 
         redTanks[0].GetComponent<Movement>().isControlled = true;
