@@ -27,8 +27,8 @@ public class FixSight : MonoBehaviour
 
     public void Fix()
     {
-        if (((!Main.Instance.blueIsRepOrUp && transform.CompareTag("Blue")) ||
-            (!Main.Instance.redIsRepOrUp && transform.CompareTag("Red"))) && isBroken)
+        if (((!Main.Instance.blueIsRepOrUp && transform.CompareTag("Blue") && Main.Instance.controllerOfEdits.GetBlueEdits() > 0) ||
+            (!Main.Instance.redIsRepOrUp && transform.CompareTag("Red") && Main.Instance.controllerOfEdits.GetRedEdits() > 0)) && isBroken)
         {
             StartCoroutine(Fixing());
         }
@@ -53,6 +53,19 @@ public class FixSight : MonoBehaviour
         sightPart.SetActive(true);
         isBroken = false;
         SetRepTag(false);
+        LowerEdits();
+    }
+
+    private void LowerEdits()
+    {
+        if (transform.CompareTag("Blue"))
+        {
+            Main.Instance.controllerOfEdits.LowerBlueEdits();
+        }
+        else
+        {
+            Main.Instance.controllerOfEdits.LowerRedEdits();
+        }
     }
 
     private void SetRepTag(bool val)

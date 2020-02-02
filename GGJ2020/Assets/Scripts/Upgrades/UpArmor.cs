@@ -23,8 +23,8 @@ public class UpArmor : MonoBehaviour
 
     public void Upgrade()
     {
-        if (((!Main.Instance.blueIsRepOrUp && transform.CompareTag("Blue")) ||
-            (!Main.Instance.redIsRepOrUp && transform.CompareTag("Red"))) && notUpgraded)
+        if (((!Main.Instance.blueIsRepOrUp && transform.CompareTag("Blue") && Main.Instance.controllerOfEdits.GetBlueEdits() > 0) ||
+            (!Main.Instance.redIsRepOrUp && transform.CompareTag("Red") && Main.Instance.controllerOfEdits.GetRedEdits() > 0)) && notUpgraded)
         {
             StartCoroutine(Upgrading());
         }
@@ -48,6 +48,20 @@ public class UpArmor : MonoBehaviour
         armorPart.SetActive(true);
         notUpgraded = false;
         SetRepTag(false);
+
+        LowerEdits();
+    }
+
+    private void LowerEdits()
+    {
+        if(transform.CompareTag("Blue"))
+        {
+            Main.Instance.controllerOfEdits.LowerBlueEdits();
+        }
+        else
+        {
+            Main.Instance.controllerOfEdits.LowerRedEdits();
+        }
     }
 
     private void SetRepTag(bool val)

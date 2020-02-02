@@ -5,7 +5,6 @@ public class SwapTank : MonoBehaviour
 {
     [SerializeField] private bool isBlue = false;
     [SerializeField] private Transform spawn = null;
-    [SerializeField] private TextMeshProUGUI numberText = null;
     private int currentTank = 0;
 
     public void SendToRight()
@@ -24,8 +23,6 @@ public class SwapTank : MonoBehaviour
             {
                 Main.Instance.activeRedTank = spawn.GetChild(currentTank).gameObject;
             }
-
-            numberText.text = (currentTank + 1).ToString();
         }
     }
 
@@ -45,8 +42,6 @@ public class SwapTank : MonoBehaviour
             {
                 Main.Instance.activeRedTank = spawn.GetChild(currentTank).gameObject;
             }
-
-            numberText.text = (currentTank + 1).ToString();
         }
     }
 }
