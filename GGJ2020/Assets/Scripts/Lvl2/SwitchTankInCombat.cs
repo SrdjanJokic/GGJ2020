@@ -13,6 +13,8 @@ public class SwitchTankInCombat : MonoBehaviour
     private void Start()
     {
         GetTanks();
+        ToggleRing(redTanks[0], true);
+        ToggleRing(blueTanks[0], true);
     }
 
     private void GetTanks()
@@ -46,8 +48,9 @@ public class SwitchTankInCombat : MonoBehaviour
     private void SwitchToNextRed()
     {
         redTanks[activeRed].GetComponent<Movement>().isControlled = false;
-        
-        if(activeRed < redTanks.Length - 1)
+        ToggleRing(redTanks[activeRed], false);
+
+        if (activeRed < redTanks.Length - 1)
         {
             activeRed++;
         }
@@ -57,11 +60,13 @@ public class SwitchTankInCombat : MonoBehaviour
         }
 
         redTanks[activeRed].GetComponent<Movement>().isControlled = true;
+        ToggleRing(redTanks[activeRed], true);
     }
 
     private void SwitchToNextBlue()
     {
         blueTanks[activevBlue].GetComponent<Movement>().isControlled = false;
+        ToggleRing(blueTanks[activevBlue], false);
 
         if (activevBlue < blueTanks.Length - 1)
         {
@@ -73,5 +78,11 @@ public class SwitchTankInCombat : MonoBehaviour
         }
 
         blueTanks[activevBlue].GetComponent<Movement>().isControlled = true;
+        ToggleRing(blueTanks[activevBlue], true);
+    }
+
+    private void ToggleRing(Transform transformToEdit, bool val)
+    {
+        transformToEdit.Find("Ring").gameObject.SetActive(val);
     }
 }
