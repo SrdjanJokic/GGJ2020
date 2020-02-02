@@ -7197,7 +7197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92361bb40de12e408ecba792d24c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueTank: {fileID: 135422922370555010, guid: 4880487ddc6dad847a03b0adebd0c6a1, type: 3}
+  blueTank: {fileID: 2545103040012257792, guid: 4880487ddc6dad847a03b0adebd0c6a1,
+    type: 3}
   redTank: {fileID: 1591378536235343557, guid: 4c31cb9337cbc7e4ead1b0bc2958582b, type: 3}
   blueSpawn: {fileID: 1106820371}
   redSpawn: {fileID: 455422991}

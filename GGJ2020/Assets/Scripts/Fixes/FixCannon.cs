@@ -12,8 +12,8 @@ public class FixCannon : MonoBehaviour
 
     private void Awake()
     {
-        cannonPart = transform.Find("UpperBody").Find("Cannon").gameObject;
-        cannonBrokenPart = transform.Find("UpperBody").Find("Cannon_Broken").gameObject;
+        cannonPart = transform.Find("Aimer").Find("UpperBody").Find("Cannon").gameObject;
+        cannonBrokenPart = transform.Find("Aimer").Find("UpperBody").Find("Cannon_Broken").gameObject;
     }
 
     public void Break()

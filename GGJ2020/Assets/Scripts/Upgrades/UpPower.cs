@@ -12,7 +12,7 @@ public class UpPower : MonoBehaviour
 
     private void Awake()
     {
-        cannonPart = transform.Find("UpperBody").Find("Cannon.002").gameObject;
+        cannonPart = transform.Find("Aimer").Find("UpperBody").Find("Cannon.002").gameObject;
     }
 
     public void RemoveUpgrade()

@@ -4,14 +4,29 @@ using System.Collections;
 
 public class Aim : MonoBehaviour
 {
-    [SerializeField] private bool isBlue;
+    public bool isBlue;
     private GameObject[] goArray;
     private RaycastHit hitInfo;
     private string layer;
+    private Transform upperPart;
+    private GameObject goToLookAt = null;
+
+    private void Awake()
+    {
+        upperPart = transform.Find("Aimer");
+    }
 
     private void Start()
     {
         StartCoroutine(RepeatSearches());
+    }
+
+    private void Update()
+    {
+        if(goToLookAt != null)
+        {
+            upperPart.LookAt(goToLookAt.transform);
+        }
     }
 
     private IEnumerator RepeatSearches()
@@ -37,7 +52,13 @@ public class Aim : MonoBehaviour
                 if(hitInfo.collider.tag == layer)
                 {
                     // Shoot
+                    upperPart.LookAt(hitInfo.transform);
+                    goToLookAt = hitInfo.transform.gameObject;
                     return;
+                }
+                else
+                {
+                    goToLookAt = null;
                 }
             }
         }

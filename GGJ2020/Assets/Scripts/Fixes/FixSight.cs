@@ -13,8 +13,8 @@ public class FixSight : MonoBehaviour
 
     private void Awake()
     {
-        sightPart = transform.Find("UpperBody").Find("LookingGlass").gameObject;
-        sightBrokenPart = transform.Find("UpperBody").Find("LookingGlassBroken").gameObject;
+        sightPart = transform.Find("Aimer").Find("UpperBody").Find("LookingGlass").gameObject;
+        sightBrokenPart = transform.Find("Aimer").Find("UpperBody").Find("LookingGlassBroken").gameObject;
     }
 
     public void Break()
